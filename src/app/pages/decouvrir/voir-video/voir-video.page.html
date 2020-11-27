@@ -1,0 +1,32 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="">
+    <ion-buttons slot="start">
+      <ion-button *ngIf="utilisateur">
+        <div class="profil">
+          <div class="muanza"></div>
+        </div>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+
+    </ion-title>
+    <span slot="end">
+      <b style="color: white; padding-right: 14px; font-family: 'Titillium Web';">
+        {{libelle}}
+      </b>
+    </span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="margin-top: -56px; width: 100vw; height: 100vh; overflow: hidden; background-color: #303030;">
+    <ion-slides (ionSlideTouchStart)="ionSlideTouchStart($event)" (ionSlideTouchEnd)="ionSlideTouchEnd($event)" #slides (ionSlideDidChange)="changementDeTab($event)"
+      [options]="{ slidesPerView: '1', initialSlide: '0', zoom: false, grabCursor: true, direction: 'vertical', loop: false }">
+      <ion-slide *ngFor="let video of videos; let i = index">
+        <div style="width: 100vw; height: 100vh; overflow: hidden; background-size: cover;">
+          <app-publication [video]="video" [index]="i" [indexEnCours]="indexEnCours"></app-publication>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

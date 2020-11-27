@@ -1,0 +1,51 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Khandaces</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="page-connexion">
+    <div class="logo">
+
+    </div>
+    <div class="message">
+      Veuillez vous connecter !
+    </div>
+    <div>
+      <form [formGroup]="form" ngSubmit="onSubmitForm()">
+        <div>
+          <ion-item>
+            <ion-input formControlName="login" placeholder="Login"></ion-input>
+          </ion-item>
+          <div *ngIf="ndem" class="messageUtilisateur">
+            <small>
+              L'utilisateur n'existe pas. Si vous n'avez pas encore de compte. Veuillez vous inscrire !
+            </small>
+          </div>
+          <div *ngIf="mauvaisModeDeConnexion" class="messageUtilisateur">
+            <small>
+              Veuillez sélectionner un autre mode de connexion !
+            </small>
+          </div>
+        </div>
+        <div>
+          <ion-item>
+            <ion-input type="password" formControlName="passe" placeholder="Mot de passe"></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-button (click)="onSubmitForm()" expand="block">Connexion</ion-button>
+        </div>
+      </form>
+    </div>
+    <div class="inscription" (click)="inscription()">
+      Si vous ne disposez pas encore de compte.
+      <div>
+        Inscrivez-vous !
+      </div>
+    </div>
+  </div>
+
+</ion-content>

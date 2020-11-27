@@ -1,0 +1,52 @@
+<div class="commentaires">
+  <div class="contenu">
+    <div class="titre" style="">
+      {{commentaires.length}} commentaires
+      <br>
+      . . .
+    </div>
+    <ion-list lines="none">
+      <ion-item [ngClass]="{'loading': loading === commentaire.id }" *ngFor="let commentaire of commentaires">
+        <ion-avatar slot="start">
+          <img style="border: 0px solid #f0f" [src]="commentaire.utilisateur.photoURL">
+        </ion-avatar>
+        <ion-label>
+          <b style="font-family: 'Roboto Condensed';">
+            <span style="font-size: 0.9em; color: #444;">
+              @{{commentaire.utilisateur.pseudo}}
+            </span>
+          </b>
+          <p style="font-family: 'Titillium Web';">
+            {{commentaire.texte}}
+          </p>
+        </ion-label>
+        <div slot="end" style="text-align: right; width: 35px;">
+          <ng-container *ngIf="!commentaire.likes">
+            <ion-button (click)="like(commentaire)" fill="clear" color="dark">
+              <ion-icon name="heart-outline"></ion-icon>
+            </ion-button>
+          </ng-container>
+
+          <ng-container *ngIf="commentaire.likes">
+            <ion-button *ngIf="!commentaire.likes[utilisateur.id]" (click)="like(commentaire)" fill="clear" color="dark">
+              <ion-icon name="heart-outline"></ion-icon>
+            </ion-button>
+            <ion-button *ngIf="commentaire.likes[utilisateur.id]" (click)="unlike(commentaire)"
+              fill="clear" color="dark">
+              <ion-icon color="primary" name="heart"></ion-icon>
+            </ion-button>
+          </ng-container>
+
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="redaction">
+    <ion-item lines="none">
+      <ion-input autocomplete="true" spellcheck="true" [(ngModel)]="texte" placeholder="Ecrivez votre commentaire ici"></ion-input>
+      <ion-button [disabled]="!texte" (click)="commenter()" fill="clear" slot="end">
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Mettre à jour mon mot de passe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-connexion">
+    <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+      <div class="etape1" *ngIf="etape1">
+        <ion-item>
+          <ion-label position="floating">Ancien mot de passe</ion-label>
+          <ion-input type="password" formControlName="ancien">
+
+          </ion-input>
+        </ion-item>
+        <div style="margin-top: 10px;">
+          <ion-button (click)="suivant()" [disabled]="!ancienValide" expand="block">
+            Suivant
+          </ion-button>
+        </div>
+      </div>
+      <div class="etape2" *ngIf="etape2">
+        <div>
+          <ion-item>
+            <ion-label position="floating">Nouveau mot de passe</ion-label>
+            <ion-input type="password" formControlName="passe">
+              
+            </ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item>
+            <ion-label position="floating">Confirmer le nouveau mot de passe</ion-label>
+            <ion-input type="password" formControlName="confirm">
+              
+            </ion-input>
+          </ion-item>
+        </div>
+        <div style="margin-top: 10px;">
+          <ion-button (click)="onSubmitForm()" [disabled]="form.invalid" expand="block">
+            Inscription
+          </ion-button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</ion-content>

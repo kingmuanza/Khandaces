@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nouvelle publication</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="publier()" style="background-color: #BF953F;; text-align: center; border-radius: 5px; height: 40px;">
+        <ion-icon color="light" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-progress-bar *ngIf="progress > 0" style="opacity: 0.35;" color="primary" [value]="progress"></ion-progress-bar>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <div [ngClass]="{'gris': filtre === 'gris', 'ancien': filtre === 'ancien'}" style="height: 100px; background-color: #303030;">
+          <video muted #video autoplay loop poster="../../../assets/img/poster.jpg">
+            <source [src]="source" type="video/mp4">
+          </video>
+        </div>
+      </ion-col>
+      <ion-col size="9">
+        <ion-item>
+          <ion-textarea [(ngModel)]="legende" placeholder="Ajouter une légende">
+
+          </ion-textarea>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

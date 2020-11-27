@@ -1,0 +1,41 @@
+.nombre {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-family: 'Roboto Condensed';
+}
+
+.pseudo {
+    font-family: 'Roboto Condensed';
+}
+
+
+.page-section {
+    background-color: #fff;
+    height: calc(100vh - 114px);
+    overflow: auto;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.arriere {
+    background-color: #303030;
+    height: calc(100vh - 56px);
+    overflow: hidden;
+}
+
+ion-button {
+    --box-shadow: none;
+    box-shadow: rgba(#000, 0);
+    font-family: 'Titillium Web';
+}
+
+ion-segment-button {
+    font-family: 'Titillium Web';
+}
+
+ion-label {
+    p {
+        font-family: 'Roboto Condensed';
+    }
+}

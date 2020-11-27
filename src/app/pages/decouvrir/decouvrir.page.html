@@ -1,0 +1,158 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="">
+    <ion-title>
+      <div>
+        <ion-searchbar (ionFocus)="focusFunction()" (ionBlur)="focusOutFunction()" placeholder="Rechercher"
+          (ionInput)="rechercher($event)" [(ngModel)]="recherche" autocomplete="on" [animated]="true">
+        </ion-searchbar>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button style="background-color: rgb(203, 141, 34); text-align: center; border-radius: 5px; height: 40px;">
+        <b
+          style="font-size: 1.5em; font-family: 'Titillium Web'; color: white; padding-left: 7px; padding-right: 7px;">#</b>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollX="true" scrollable="true">
+  <div *ngIf="!rechercheEnCours" class="container-design">
+    <div class="pinterest">
+      <div>
+        <div class="khandaces-col2" style="height: 300px; overflow: hidden; border-radius: 10px;">
+          <div (click)="voirVideo(video)" class="video first" *ngIf="video">
+            <app-video [video]="video" [autoplay]="true" [hauteurMiniature]="false"></app-video>
+          </div>
+        </div>
+        <div class="khandaces-col2" style="height: 300px; overflow: hidden;">
+          <div class="video second">
+            <div (click)="voirUtilisateur(meilleurUtilisateur)" class="contenu demi"
+              [ngStyle]="{'background-image': 'url(' + photoURL2 + ')'}">
+              <div style="background-color: rgba(0,0,0,0.2); height: 100%; width: 100%; padding-top: 120px;">
+
+                <div *ngIf="meilleurUtilisateur"
+                  style="padding: 5px; padding-left: 15px; font-size: 15px; font-family: 'Roboto Condensed'; color: white;">
+
+                  <span style="width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                    @{{meilleurUtilisateur.pseudo}}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="contenu no-radius demi">
+              <div class="hashtags">
+                <div (click)="getVideosOfTag(tag)" class="hashtag" [ngClass]="{'premier': i===0}"
+                  *ngFor="let tag of tags; let i = index">
+                  <div>
+                    {{tag}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="displayer">
+      <div class="titre">
+        Vidéos récentes
+        <div class="badge">
+          <span>
+            {{videos.length}}
+          </span>
+        </div>
+      </div>
+      <div scrollX="true" scrollable="true" class="contenu">
+        <div scrollX="true" scrollable="true" class="khandaces-grid">
+          <ion-slides [options]="{ slidesPerView: '3', zoom: false, grabCursor: true }">
+            <ion-slide *ngFor="let video of videos">
+              <div (click)="voirVideosByTags(video, videos)" class="khandaces-col">
+                <div style="height: 10px;">
+
+                </div>
+                <app-video [video]="video">
+                </app-video>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </div>
+      <div class="message">
+        Scrollez horizontalement pour voir plus de vidéos
+      </div>
+    </div>
+    <div *ngFor="let rangee of rangees" class="displayer">
+      <ng-container *ngIf="rangee.videos.length > 0">
+
+        <div class="titre">
+          {{rangee.tagName}}
+          <div class="badge">
+            <span>
+              {{rangee.videos.length}}
+            </span>
+          </div>
+        </div>
+        <div scrollX="true" scrollable="true" class="contenu">
+          <div scrollX="true" scrollable="true" class="khandaces-grid">
+            <ion-slides [options]="{ slidesPerView: '3', zoom: false, grabCursor: true }">
+              <ion-slide *ngFor="let video of rangee.videos">
+                <div (click)="voirVideosByTags(video, rangee.videos, rangee.tagName)" class="khandaces-col">
+                  <div style="height: 10px;">
+
+                  </div>
+                  <app-video [video]="video"></app-video>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </div>
+        </div>
+        <div class="message">
+          Scrollez horizontalement pour voir plus de vidéos
+        </div>
+      </ng-container>
+    </div>
+    <div style="height: 640px;">
+
+    </div>
+  </div>
+  <div *ngIf="rechercheEnCours" class="container-design">
+    <ion-item (click)="voirUtilisateur(u);" *ngFor="let u of resultatsPersonnes">
+      <ion-avatar slot="start">
+        <img [src]="u.photoURL">
+      </ion-avatar>
+      <ion-label>
+        <b style="font-family: 'Titillium Web';">
+          @{{u.pseudo}}
+        </b>
+        <p>
+          {{u.description}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item (click)="getVideosOfTag(tag)" *ngFor="let tag of resultatsTags">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/img/hashtag.png">
+      </ion-thumbnail>
+      <ion-label>
+        {{formatTag(tag)}}
+      </ion-label>
+    </ion-item>
+    <ion-item (click)="voirVideo(video)" *ngFor="let video of resultatsVideos">
+      <ion-thumbnail slot="start">
+        <img *ngIf="video.poster" [src]="video.poster">
+        <img *ngIf="!video.poster"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+      </ion-thumbnail>
+      <ion-label>
+        <b style="font-family: 'Titillium Web';">
+          @{{video.utilisateur.pseudo}}
+        </b>
+        <p>
+          {{video.tags}}
+        </p>
+      </ion-label>
+    </ion-item>
+  </div>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons *ngIf="utilisateur && utilisateur.vientDeSinscrire" slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Modifier mon profil
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()"
+        style="background-color:rgb(203, 141, 34); text-align: center; border-radius: 5px; height: 40px;">
+        <b style="font-size: 1.5em; font-family: 'Titillium Web'; color: white; padding-left: 7px; padding-right: 7px;">
+
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </b>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-progress-bar *ngIf="photo" color="primary" [value]="progress"></ion-progress-bar>
+  <div class="profil-container">
+    <div class="entete">
+      <div class="profil-photo-container">
+        <div (click)="galerie()" class="profil-photo shadow-1" [ngStyle]="{'background-image': 'url('+ photoURL + ')'}">
+
+        </div>
+      </div>
+      <div (click)="galerie()" class="profil-name-container" style="text-align: center;">
+        Changer la photo de profil
+      </div>
+    </div>
+    <div class="contenu">
+      <input #fileButton type="file" [disabled]="!pseudoDisponible || form.invalid" (change)="uploadFile($event)" class="filebtn" />
+      <form [formGroup]="form">
+        <div>
+          <ion-item>
+            <ion-label position="floating">Pseudo</ion-label>
+            <ion-input formControlName="pseudo">
+
+            </ion-input>
+          </ion-item>
+          <div *ngIf="!pseudoDisponible" class="messageUtilisateur">
+            <small>
+              Le pseudo est déjà utilisé. Veuillez en choisir un autre
+            </small>
+          </div>
+        </div>
+        <div>
+          <ion-item class="textarea">
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea maxlength="100" formControlName="description">
+
+            </ion-textarea>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item>
+            <ion-label position="floating">Noms</ion-label>
+            <ion-input formControlName="nom">
+
+            </ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item>
+            <ion-label position="floating">Prénoms</ion-label>
+            <ion-input formControlName="prenom">
+
+            </ion-input>
+          </ion-item>
+        </div>
+      </form>
+    </div>
+
+    <div class="couverture-tab">
+
+    </div>
+  </div>
+</ion-content>

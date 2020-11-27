@@ -1,0 +1,121 @@
+ion-button {
+    --box-shadow: none;
+    box-shadow: rgba(#000, 0);
+    font-family: 'Titillium Web';
+}
+
+.profil-description {
+    font-family: 'Roboto Condensed';
+    text-align: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    line-height: 1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #444;
+}
+.profil {
+    &-container .entete {
+        padding-top: 10px;
+    }
+    &-container {
+        height: 100vh;
+        width: 100vw;
+        padding-bottom: 15vh;
+        background-color: #fff;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    &-photo {
+        width: 30vw;
+        height: 30vw;
+        margin-left: 35vw;
+        background-color: #777;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center center;
+        font-family: 'Roboto Condensed';
+    }
+
+    &-name-container {
+        margin-top: 5px;
+        font-family: 'Roboto Condensed';
+        font-size: 0.9em;
+    }
+
+    &-details-container {
+        margin-top: 15px;
+    }
+
+    &-details {
+        text-align: center;
+        span {
+            display: inline-block;
+            font-family: 'Titillium Web';
+            line-height: 1.15;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            .chiffre {
+                font-weight: bolder;
+            }
+            .libelle {
+                font-size: 0.8em;
+                color: #333;
+            }
+        }
+    }
+
+    &-boutons-container {
+        margin-top: 15px;
+    }
+
+    &-segment {
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+    }
+}
+
+.profil-videos {
+    text-align: left;
+    line-height: 0.8;
+}
+
+
+.logo {
+    width: 30vw;
+    height: 30vw;
+    margin-left: 35vw;
+    // border: 1px solid #aaa;
+    border-radius: 30px;
+    background-image: url('../../../assets/img/logos/Kmarron.png');
+    background-size: cover;
+    background-position: center center;
+}
+
+.invitation {
+    font-family: 'Titillium Web';
+    font-size: 15px;
+    margin-left: 10vw;
+    text-align: center;
+    width: 80vw;
+    margin-top: 30px;
+}
+
+
+.inscription {
+    color: #777;
+    text-align: center;
+    font-family: 'Titillium Web';
+
+    div {
+        font-weight: bold;
+        padding: 10px;
+        color: #444;
+    }
+}

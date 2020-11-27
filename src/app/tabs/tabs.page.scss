@@ -1,0 +1,134 @@
+@keyframes commentaires {
+    0% {
+        transform-origin: 0% 100%;
+        transform: translateY(100%);
+    }
+    100% {
+        transform-origin: 0% 100%;
+        transform: translateY(0%);
+    }
+}
+.commentaires {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    max-height: 100vh;
+    z-index: 12345;
+    transform-origin: 0% 100%;
+    animation-name: commentaires;
+    animation-duration: 1000ms;
+
+    .contenu {
+        margin-top: 20vh;
+        height: 80vh;
+        background-color: #fff;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        .liste {
+            margin-top: 0px;
+            padding-top: 10px;
+        }
+
+    }
+}
+
+
+@keyframes publier {
+    0% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes ionTabBar {
+    0% {
+        border-top-left-radius: 0%;
+        border-top-right-radius: 0%;
+    }
+
+    100% {
+        border-top-left-radius: 100%;
+        border-top-right-radius: 100%;
+    }
+}
+
+ion-tabs {
+    background: #fff;
+    color: #111;
+
+    &.isAccueil {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    z-index: 9999;
+}
+
+ion-tab-bar {
+    --background: #fff;
+    --border: 0px solid #efefef;
+    --color: #666;
+
+    &.isAccueil {
+        --background: rgba(0, 0, 0, 0.1);
+        --border: 0px solid #fff;
+        --color: #fff;
+    }
+
+    // height: 65px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+ion-tab-button {
+    --padding-top: 0px;
+    --background: rgba(0, 0, 0, 0);
+
+    &.principal {
+        --padding-top: 0px;
+
+        .publier {
+            margin-top: 0px;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+
+            animation-name: publier;
+            animation-duration: 500ms;
+            animation-delay: 500ms;
+
+            .milieu-vertical {
+                padding-top: 55px;
+                transform: translateY(-50%);
+                font-size: 30px;
+            }
+        }
+    }
+
+}
+
+.white {
+    color: white;
+}
+
+.isNotVisible {
+    opacity: 0;
+}
+
+.isVisible {
+    opacity: 1;
+}
+
+.bg-marron {
+    background-color: rgb(203, 141, 34);
+    //background-image: url('../../assets/img/gold1.jpg');
+    background-position: center center;
+    background-size: cover;
+    color: #fff;
+}

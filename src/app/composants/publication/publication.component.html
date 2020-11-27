@@ -1,0 +1,106 @@
+<div class="publication">
+  <div class="publication__video" [ngClass]="{'gris': filtre === 'gris', 'ancien': filtre === 'ancien'}">
+    <video loop #videoPlayer poster="../../../assets/img/poster.jpg">
+      <source src="" type="video/mp4">
+    </video>
+  </div>
+  <div class="filtre-noir">
+  </div>
+  <div *ngIf="like" class="coeur-muanza-container">
+    <div class="coeur-muanza">
+      <div>
+        <ion-icon name="heart"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div class="publication__informations">
+
+    <div class="proprietaire">
+      <div (click)="voirProfil()" class="photo"
+        [ngStyle]="{'background-image': 'url(../../../assets/img/logos/Kmarron.png)'}">
+        <img [ngClass]="{'showPP': showPP, 'dontShowPP': !showPP}" (load)="dosomething($event)" [src]="photoURL"
+          style="min-width: 100%; min-height: 100%;">
+      </div>
+      <div class="nom">
+        @{{video.utilisateur.pseudo}}
+      </div>
+      <div class="description">
+        {{video.description}}
+      </div>
+    </div>
+
+    <div class="datePrix">
+      <div class="prix">
+        45
+      </div>
+      <div class="date" *ngIf="video">
+        {{generateLibelleDate(video)}}
+      </div>
+      <div class="swapeur-list">
+        <div class="swapeur-item">
+          <img class="swapeur-image" [src]="photoURL">
+          <img class="swapeur-image" [src]="photoURL">
+          <img class="swapeur-image" [src]="photoURL">
+          <img class="swapeur-image" [src]="photoURL">
+          <img class="swapeur-image" [src]="photoURL">
+        </div>
+      </div>
+    </div>
+    <div class="boutons">
+      <div class="bouton" (click)="toggleLike()">
+        <ion-button *ngIf="!like" size="large" fill="clear" color="dark">
+          <ion-icon color="light" name="heart"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="like" size="large" fill="clear" color="dark">
+          <ion-icon color="primary" name="heart"></ion-icon>
+        </ion-button>
+        <div class="chiffre">
+          {{nombreLikes}}
+        </div>
+      </div>
+      <div class="bouton" (click)="commentaires()">
+        <ion-button size="large" fill="clear" color="dark">
+          <ion-icon color="light" name="chatbubble"></ion-icon>
+        </ion-button>
+        <div class="chiffre">
+          {{nombreCommentaires}}
+        </div>
+      </div>
+      <div class="bouton">
+        <ion-button (click)="favoris()" *ngIf="!isFavoris" size="large" fill="clear" color="dark">
+          <ion-icon color="light" name="bookmark"></ion-icon>
+        </ion-button>
+        <ion-button (click)="unfavoris()" *ngIf="isFavoris" size="large" fill="clear" color="dark">
+          <ion-icon color="primary" name="bookmark"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="bouton" (click)="partager()">
+        <ion-button size="large" fill="clear" color="dark">
+          <ion-icon color="light" name="share-social"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="bouton" (click)="toggleMute()">
+        <ion-button *ngIf="videoPlayer && !videoPlayer.muted" size="large" fill="clear" color="dark">
+          <ion-icon color="light" name="volume-high-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="videoPlayer && videoPlayer.muted" size="large" fill="clear" color="dark">
+          <ion-icon color="light" name="volume-mute-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <div *ngIf="mavideo" class="bouton" (click)="supprimer()">
+        <ion-button size="large" fill="clear" color="dark">
+          <ion-icon color="light" name="trash"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+  <div (click)="click2($event)" class="publication__effets">
+  </div>
+  <div class="publication__barre_lecture">
+    <ion-progress-bar style="opacity: 0.35;" color="primary" [value]="pourcentageLecture"></ion-progress-bar>
+  </div>
+
+  <div class="commentaires2">
+
+  </div>
+</div>

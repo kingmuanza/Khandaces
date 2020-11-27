@@ -1,0 +1,30 @@
+<!-- The video -->
+<div class="khandace-container" [ngClass]="{'radius': radius}">
+
+  <div class="khandace-video" [ngClass]="{'radius': radius, 'hauteurMiniature': hauteurMiniature, 'hauteurNormal': !hauteurMiniature}">
+    <video muted loop #videoPlayer autoplay [poster]="video.poster ? video.poster : '../../../assets/img/poster.jpg'">
+      <source src="" type="video/mp4">
+    </video>
+  </div>
+  <div (click)="click($event)" class="khandace-video-content"  [ngClass]="{'radius': radius, 'hauteurMiniature': hauteurMiniature, 'hauteurNormal': !hauteurMiniature}">
+    <div *ngIf="like" class="coeur">
+      <span>
+        <ion-icon name="heart"></ion-icon>
+      </span>
+      <div class="nombre">
+        150
+      </div>
+    </div>
+    <div style="height: 2px;">
+
+    </div>
+    <div class="contenu" [ngClass]="{'hauteurMiniature': hauteurMiniature, 'hauteurNormal': !hauteurMiniature}">
+      
+      <div class="video-auteur" [ngClass]="{'hauteurMiniature': hauteurMiniature, 'hauteurNormal': !hauteurMiniature}">
+        <ng-container *ngIf="video && montrerPseudo">
+          @{{video.utilisateur.pseudo}}
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

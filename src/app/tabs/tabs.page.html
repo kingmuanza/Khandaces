@@ -1,0 +1,39 @@
+<ion-tabs [ngClass]="{'isAccueil': translucide}"
+  (ionTabsDidChange)="ionTabsDidChange($event)">
+  <ion-tab-bar *ngIf="isVisible"
+    [ngClass]="{'isAccueil': translucide, 'isVisible': isVisible, 'isNotVisible': !isVisible}" slot="bottom">
+
+    <ion-tab-button tab="accueil" (ionSelect)="changerDesign()">
+      <ion-icon name="home"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="decouvrir">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button class="principal" tab="swap">
+      <div [ngClass]="{'bg-marron': isSwap}" class=" publier">
+        <div class="milieu-vertical">
+          <ion-icon name="camera-outline"></ion-icon>
+        </div>
+      </div>
+    </ion-tab-button>
+
+    <ion-tab-button tab="boutique">
+      <ion-icon name="cart-outline"></ion-icon>
+      <ion-badge>3</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="monprofil">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-badge>5</ion-badge>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+<div *ngIf="isCommentaires" (click)="clicSurCommentaires()" class="commentaires">
+  <div class="contenu" (click)="clicSurContenu()">
+    <div class="liste">
+      <app-commentaires-display [video]="videoEnLecture"></app-commentaires-display>
+    </div>
+  </div>
+</div>

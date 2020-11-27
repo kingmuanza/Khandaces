@@ -1,0 +1,115 @@
+<!-- The video -->
+
+<ion-slides #slides (ionSlideDidChange)="changementDeTab($event)"	 [options]="{ slidesPerView: '1', initialSlide: '1', zoom: false, grabCursor: true }">
+  <ion-slide>
+    <div class="khandace-container">
+      <app-profil-display [utilisateur]="video.utilisateur" ></app-profil-display>
+    </div>
+    
+  </ion-slide>
+  <ion-slide>
+    <div class="khandace-container">
+
+      <div (click)="click2($event)" class="khandace-video">
+        <video loop #videoPlayer autoplay poster="../../../assets/img/poster.jpg">
+          <source src="" type="video/mp4">
+        </video>
+      </div>
+
+      <div *ngIf="showDescription" class="khandace-video-content" [ngClass]="{'not-ready': notReady}">
+        <!-- Effet lorsqu'on double tap sur l'écran -->
+        <div *ngIf="like" class="coeur-muanza">
+          <div>
+            <ion-icon name="heart"></ion-icon>
+          </div>
+        </div>
+        <!-- Colonne pour les boutons -->
+        <div class="boutons">
+          <div (click)="toggleLike()" class="bouton big rotation">
+            <div *ngIf="!like" style="color: white;">
+              <ion-icon name="heart-outline"></ion-icon>
+            </div>
+            <div class="animated-coeur" *ngIf="like" style="color: #f0f;">
+              <ion-icon name="heart"></ion-icon>
+            </div>
+            <div class="libelle">
+              149
+            </div>
+          </div>
+          <div class="bouton rotation">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <div class="libelle">
+              785
+            </div>
+          </div>
+          <div class="bouton rotation">
+            <ion-icon name="bookmark-outline"></ion-icon>
+          </div>
+          <div class="bouton rotation">
+            <ion-icon name="share-social-outline"></ion-icon>
+          </div>
+          <div (click)="toggleMute()" class="bouton rotation">
+            <ion-icon *ngIf="videoPlayer && !videoPlayer.muted" name="volume-high-outline"></ion-icon>
+            <ion-icon *ngIf="videoPlayer && videoPlayer.muted" name="volume-mute-outline"></ion-icon>
+          </div>
+          <div (click)="tooglePlay()" class="bouton rotation bas">
+            <ion-icon *ngIf="videoPlayer && videoPlayer.paused" name="play-outline"></ion-icon>
+            <ion-icon *ngIf="videoPlayer && !videoPlayer.paused" name="pause-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="articleAVendre">
+          <div class="prix">
+            <span>
+              {{video.cout}}
+            </span>
+          </div>
+          {{getLibelleDate(video.date)}}
+        </div>
+
+        <div class="tap-zone" (click)="click($event)">
+
+        </div>
+
+        <div style="display: none;">
+          <ion-fab vertical="center" horizontal="center" slot="fixed">
+            <ion-fab-button class="rotation">
+              <ion-icon name="swap-horizontal-outline"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+          <div class="credits" style="color: white; margin-top: 10px; text-align: center;">
+            Tester pour <b style="color: #f0f;">250</b> crédits
+          </div>
+        </div>
+
+        <div class="contenu">
+          <div class="video-details">
+            <div *ngIf="touching" style="margin-bottom: 5px;">
+
+            </div>
+            <div class="swapping" [ngClass]="{'touching': touching}">
+            </div>
+            <div class="photoProfil" [ngStyle]="{'background-image': 'url(' + photoURL + ')'}"></div>
+            <div class="video-auteur">@{{video.utilisateur.pseudo}}</div>
+            <div class="video-tags">{{video.tags}}</div>
+            <div class="video-description">
+              Description de la vidéo : Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Nunc molestie aliquet blandit
+            </div>
+
+            <div class="video-identification"></div>
+          </div>
+        </div>
+
+        <div *ngIf="barreLecture" class="barre-lecture">
+          <ion-progress-bar color="primary" [value]="pourcentageLecture"></ion-progress-bar>
+        </div>
+
+      </div>
+    </div>
+  </ion-slide>
+  <ion-slide>
+    <div class="khandace-container">
+      <app-commentaires-display></app-commentaires-display>
+    </div>
+  </ion-slide>
+</ion-slides>

@@ -1,0 +1,86 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ng-container *ngIf="utilisateur">
+        @{{utilisateur.pseudo}}
+      </ng-container>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="arriere">
+
+    <div class="page-section">
+
+      <div class="profil-segment">
+        <ion-segment (ionChange)="segmentChanged($event)" [value]="segmentValue">
+          <ion-segment-button value="abonnements">
+            {{abonnements.length}} abonnements
+          </ion-segment-button>
+          <ion-segment-button value="abonnes">
+            {{abonnes.length}} abonnés
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <div *ngIf="segmentValue === 'abonnes'">
+        <ion-list>
+          <ion-item *ngFor="let abo of abonnes">
+            <ion-avatar (click)="voir(abo)" slot="start">
+              <img style="border: 0px solid #f0f" [src]="abo.celuiQuiSabonne.photoURL">
+            </ion-avatar>
+            <ion-label>
+              <div class="pseudo">
+                @{{abo.celuiQuiSabonne.pseudo}}
+              </div>
+              <p>
+                {{abo.celuiQuiSabonne.description}}
+              </p>
+            </ion-label>
+            <div slot="end" style="text-align: right;">
+              <ion-button *ngIf="estUnAbonnement(abo.celuiQuiSabonne)" (click)="sedesabonner(abo.celuiQuiSabonne)"
+                size="small" color="light">
+                Abonné
+              </ion-button>
+              <ion-button *ngIf="!estUnAbonnement(abo.celuiQuiSabonne)" (click)="sabonner(abo.celuiQuiSabonne)"
+                size="small">
+                Suivre
+              </ion-button>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngIf="segmentValue === 'abonnements'">
+        <ion-list>
+          <ion-item *ngFor="let abo of abonnements">
+            <ion-avatar (click)="voir(abo)" slot="start">
+              <img style="border: 0px solid #f0f" [src]="abo.star.photoURL">
+            </ion-avatar>
+            <ion-label>
+              <div class="pseudo">
+                @{{abo.star.pseudo}}
+              </div>
+              <p>
+                {{abo.star.description}}
+              </p>
+            </ion-label>
+            <div slot="end" style="text-align: right;">
+              <ion-button *ngIf="estUnAbonnement(abo.star)" (click)="sedesabonner(abo.star)" size="small" color="light">
+                Abonné
+              </ion-button>
+              <ion-button *ngIf="!estUnAbonnement(abo.star)" (click)="sabonner(abo.star)" size="small">
+                Suivre
+              </ion-button>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

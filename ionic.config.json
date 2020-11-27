@@ -1,0 +1,7 @@
+{
+  "name": "Khandaces",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

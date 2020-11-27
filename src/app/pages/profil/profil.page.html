@@ -1,0 +1,158 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="arriere">
+
+    <div class="page-section" >
+      <div *ngIf="utilisateur" class="entete">
+        <div class="profil-photo-container">
+          <div class="profil-photo shadow-1" [ngStyle]="{'background-image': 'url('+ utilisateur.photoURL + ')'}">
+
+          </div>
+        </div>
+        <div class="profil-name-container" style="text-align: center;">
+          @{{utilisateur ? utilisateur.pseudo: '...'}}
+        </div>
+        <div class="profil-details-container">
+          <div class="profil-details">
+            <span>
+              <div class="chiffre">
+                {{videos.length}}
+              </div>
+              <div class="libelle">
+                Publications
+              </div>
+            </span>
+            <span (click)="voirAbonnements()">
+              <div class="chiffre">
+                {{abonnements}}
+              </div>
+              <div class="libelle">
+                Abonnements
+              </div>
+            </span>
+            <span (click)="voirAbonnes()">
+              <div class="chiffre">
+                {{abonnes}}
+              </div>
+              <div class="libelle">
+                Abonnés
+              </div>
+            </span>
+          </div>
+
+        </div>
+        <div class="profil-boutons-container" style="text-align: center;">
+          <ion-button *ngIf="estUnAbonnement(utilisateur)" (click)="sedesabonner(utilisateur)" size="small" color="light">
+            Abonné
+          </ion-button>
+          <ion-button *ngIf="!estUnAbonnement(utilisateur)" (click)="sabonner(utilisateur)" size="small">
+            Suivre
+          </ion-button>
+          <ion-button (click)="toggleVoirProfilsSimilaires()" size="small" color="light">
+            <ion-icon *ngIf="!voirProfilsSimilaires" name="chevron-down-outline"></ion-icon>
+            <ion-icon *ngIf="voirProfilsSimilaires" name="chevron-up-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+      <div *ngIf="utilisateur" class="profil-description">
+        <small *ngIf="utilisateur">
+          {{utilisateur.description ? utilisateur.description.substring(0, 99): ''}}
+        </small>
+      </div>
+      <div *ngIf="voirProfilsSimilaires" class="profils-similaires">
+        <div class="libelle">
+          <span>
+            Suggestions pour vous
+          </span>
+        </div>
+
+        <ion-slides [options]="{ slidesPerView: '3', zoom: false, grabCursor: true }">
+          <ion-slide *ngFor="let ps of profilsSimilaires">
+            <div class="khandaces-col">
+              <div class="profil-similaire">
+                <div class="fermer">
+                  <ion-icon name="close" style="color: #777"></ion-icon>
+                </div>
+                <div (click)="voirProfil(ps)" class="photo">
+                  <img [src]="ps.photoURL">
+                </div>
+                <div class="pseudo">
+                  @{{ps.pseudo}}
+                </div>
+                <div class="boutons">
+                  <ion-button (click)="sabonner(ps)" *ngIf="!estUnAbonnement(ps)" size="small" color="primary">
+                    S'abonner
+                  </ion-button>
+                  <ion-button (click)="sedesabonner(ps)" *ngIf="estUnAbonnement(ps)" size="small" color="light">
+                    Abonné
+                  </ion-button>
+                </div>
+              </div>
+
+            </div>
+          </ion-slide>
+        </ion-slides>
+
+      </div>
+      <div *ngIf="utilisateur" class="contenu">
+        <div class="profil-segment">
+          <ion-segment (ionChange)="segmentChanged($event)" value="videocam">
+            <ion-segment-button value="videocam">
+              <ion-icon name="videocam-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="image">
+              <ion-icon name="image-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="heart">
+              <ion-icon name="heart-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="basket">
+              <ion-icon name="basket-outline"></ion-icon>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+
+        <div *ngIf="segmentValue === 'videocam'" class="profil-videos">
+          <div *ngFor="let video of videos" class="khandaces-col">
+            <app-video [video]="video" [radius]="false" [montrerPseudo]="false"></app-video>
+          </div>
+        </div>
+
+        <div *ngIf="segmentValue === 'image'" class="profil-videos">
+          <div class="khandaces-col">
+            <div style="height: 120px; background-size: cover; background-position: center center;"
+              [ngStyle]="{'background-image': 'url('+ utilisateur.photoURL + ')'}">
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="segmentValue === 'heart'" class="profil-videos">
+          <div *ngFor="let video of autresVideos; let i = index" class="khandaces-col">
+            <ng-container>
+              <app-video [video]="video" [radius]="false" [like]="true"></app-video>
+            </ng-container>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="couverture-tab">
+
+      </div>
+    </div>
+
+  </div>
+</ion-content>

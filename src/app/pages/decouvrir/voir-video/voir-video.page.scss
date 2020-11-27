@@ -1,0 +1,77 @@
+ion-slide {
+    height: 100vh!important;
+}
+
+.profil {
+    border: 2px solid #f0f;
+    padding: 2px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-left: 3px;
+
+    .muanza {
+        border-radius: 50%;
+        border-radius: 50%;
+
+        background-image: url('../../../../assets/img/moi.jpg');
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+ion-toolbar {
+    --background: rgba(0, 0, 0, 0);
+}
+
+.displayer {
+    padding-top: 10px;
+
+    .titre {
+        padding: 10px;
+        padding-left: 20px;
+        font-family: 'Titillium Web';
+        font-size: 1.2em;
+        font-weight: bold;
+        ;
+
+        .badge {
+            font-size: 0.9em;
+            float: right;
+            padding: 3px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: white;
+            border-radius: 10px;
+        }
+    }
+
+    .contenu {
+        margin: 5px;
+
+    }
+
+    .message {
+        padding: 5px;
+        padding-left: 20px;
+        font-family: 'Titillium Web';
+        font-size: 0.9em;
+        color: #444;
+    }
+}
+
+ion-grid {
+    --ion-grid-padding: 0px;
+}
+
+
+.commentaires {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
+    z-index: 12345;
+}

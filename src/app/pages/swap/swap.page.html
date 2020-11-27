@@ -1,0 +1,81 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar style="background-color: rgb(0,0,0,0);">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="height: 100vh;overflow: hidden; margin-top: -56px;">
+    <div style="height: 100vh; background-color: #303030;  color: white">
+      <input #fileButton type="file" accept="video/mp4, video/*" (change)="uploadFile($event)" class="filebtn" />
+      <div [ngClass]="{'gris': gris, 'ancien': ancien}">
+        <video muted #video preload="metadata" id="video" autoplay loop poster="../../../assets/img/poster.jpg">
+          <source [src]="source+'#t=2'" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="filtre">
+      <ion-slides #slides (ionSlideDidChange)="changementDeTab($event)"
+        [options]="{ slidesPerView: '1', initialSlide: '0', zoom: false, grabCursor: true, loop: false }">
+        <ion-slide>
+          <div style="width: 100vw; height: 100vh; overflow: hidden; background-size: cover;">
+            <h1>
+              Normal
+            </h1>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div style="width: 100vw; height: 100vh; overflow: hidden; background-size: cover;">
+            <h1>
+              Noir sur blanc
+            </h1>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div style="width: 100vw; height: 100vh; overflow: hidden; background-size: cover;">
+            <h1>
+              Ancien
+            </h1>
+          </div>
+        </ion-slide>
+      </ion-slides>
+      <div class="boutons tres-haut gauche">
+        <div class="bouton" *ngIf="nouvelleVideoEstAjoutee">
+          <ion-button (click)="resetView()" fill="clear">
+            <ion-icon color="light" name="close"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <div class="boutons haut droit">
+        <div class="bouton" *ngIf="!nouvelleVideoEstAjoutee">
+          <ion-button (click)="galerie()" fill="clear">
+            <ion-icon color="light" name="image"></ion-icon>
+          </ion-button>
+        </div>
+        <div class="bouton" *ngIf="!nouvelleVideoEstAjoutee">
+          <ion-button (click)="galerie()" fill="clear">
+            <ion-icon color="light" name="videocam"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <div class="boutons bas droit">
+        <div class="bouton" *ngIf="nouvelleVideoEstAjoutee">
+          <ion-button (click)="enregistrer()" fill="clear">
+            <ion-icon color="light" name="save"></ion-icon>
+          </ion-button>
+        </div>
+        <div class="bouton primaire" *ngIf="nouvelleVideoEstAjoutee">
+          <ion-button (click)="publier()" fill="clear">
+            <ion-icon color="light" name="send"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+    <canvas id='canvas'>
+
+    </canvas>
+    <img [src]="poster">
+  </div>
+</ion-content>

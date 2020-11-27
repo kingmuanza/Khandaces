@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "40236602313",
+    "firebase_url": "https://khandaces.firebaseio.com",
+    "project_id": "khandaces",
+    "storage_bucket": "khandaces.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40236602313:android:b9a5ea364966f11fd0ce18",
+        "android_client_info": {
+          "package_name": "com.khandaces.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40236602313-7e3au2njf3hh9s8aogd3qo6d3dedigrs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSndASvMsnZM2U9CfTsEG6ts7_l96Xz5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40236602313-7e3au2njf3hh9s8aogd3qo6d3dedigrs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

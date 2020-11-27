@@ -1,0 +1,67 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Créer un compte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="rs">
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="authGoogle()">
+          <div class="logo">
+            <img src="../.././../assets/img/Logo_google.png">
+          </div>
+        </ion-col>
+        <ion-col (click)="authFacebook()">
+          <div class="logo">
+            <img class="facebook" src="../.././../assets/img/logo_facebook.png">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="page-connexion">
+    <div class="message">
+      Créer un compte en une minute
+      <br>
+      . . .
+    </div>
+    <div>
+      <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+        <div>
+          <ion-item>
+            <ion-input type="text" formControlName="login" placeholder="Votre adresse mail"></ion-input>
+          </ion-item>
+          <div *ngIf="utilisateurExiste" class="messageUtilisateur">
+            <small>
+              L'utilisateur existe déjà. S'il s'agit de vous, veuillez vous connecter sur la page de connexion !
+            </small>
+          </div>
+        </div>
+        <div>
+          <ion-item>
+            <ion-input type="password"  formControlName="passe" placeholder="Mot de passe"></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item>
+            <ion-input type="password" formControlName="confirm" placeholder="Confirmer le mot de passe"></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-button (click)="onSubmitForm()" [disabled]="form.invalid || utilisateurExiste" expand="block">
+            Inscription
+          </ion-button>
+        </div>
+      </form>
+    </div>
+    <div class="inscription" (click)="connexion()">
+      Si vous ne disposez d'un compte.
+      <div>
+        Connectez-vous ici !
+      </div>
+    </div>
+  </div>
+
+</ion-content>

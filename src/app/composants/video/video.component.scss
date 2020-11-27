@@ -1,0 +1,140 @@
+/* Style the video: 100% width and height to cover the entire window */
+.radius {
+    border-radius: 10px;
+    &.hauteurMiniature {
+        
+    border-radius: 5px;
+    }
+    
+}
+.hauteurMiniature {
+    height: 120px;
+}
+.hauteurNormal {
+    
+    height: 290px;
+}
+.khandace-container {
+    // border: 3px solid #777;
+    padding: 2px;
+
+    .coeur {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        font-size: 35px;
+        color: #f0f;
+        text-align: right;
+        margin-top: -16px;
+        padding-right: 10px;
+
+        animation-name: coeur;
+        animation-duration: 500ms;
+
+    }
+}
+
+.nombre {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: -10px;
+    padding-right: 5px;
+    opacity: 0;
+    animation-name: nombre;
+    animation-delay: 500ms;
+    animation-duration: 2000ms;
+
+}
+.khandace-video {
+    overflow: hidden;
+    width: 100%;
+    div {
+        width: 150px;
+        height: 150px;
+    }
+    video {
+        position: relative;
+        right: 0;
+        top: 0;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: 105%;
+    }
+    &.hauteurMiniature {
+        video {
+            top: -30px;
+        }
+    }
+    &-content {
+        
+        padding: 10px;
+        position: relative;
+        &.hauteurMiniature {
+            margin-top: -120px;
+        }
+        &.hauteurNormal {
+            margin-top: -290px;
+        }
+        color: #fff;
+        background: linear-gradient(to top, rgba(#000, 0.8), rgba(#000, 0.2), rgba(#000, 0.2), rgba(#000, 0.4));
+        
+
+        .contenu {
+            &.hauteurMiniature {
+                margin-top: 85px;
+            }
+            &.hauteurNormal {
+                margin-top: 250px;
+            }
+            text-align: left;
+            
+        }
+    }
+}
+
+.video-titre {
+    
+    font-size: 0.9em;
+}
+.video-auteur {
+    &.hauteurMiniature {
+        width: 80px;
+    }
+    &.hauteurNormal {
+        width: 120px;
+    }
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    font-family: 'Roboto Condensed';
+}
+
+@keyframes coeur {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes nombre {
+    0% {
+        opacity: 1;
+        margin-top: -10px;
+    }
+    100% {
+        opacity: 0;
+        margin-top: -30px;
+    }
+}
+
+.invisible {
+    opacity: 0;
+    display: none;
+}
+.visible {
+    opacity: 1;
+    display: block;
+}

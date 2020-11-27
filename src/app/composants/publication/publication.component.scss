@@ -1,0 +1,260 @@
+.publication {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #303030;
+
+    &__video {
+        height: 100vh;
+        overflow: hidden;
+
+        video {
+            position: relative;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            max-height: 105%;
+            max-width: 105%;
+
+        }
+    }
+
+    .filtre-noir {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: linear-gradient(to top, rgba(#000000, 0.4), rgba(#000000, 0.3), rgba(#000000, 0.2), rgba(#000000, 0.2), rgba(#000000, 0.2));
+        background-color: rgba(#000000, 0.2);
+    }
+
+    &__informations {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        // background: linear-gradient(to top, rgba(#000000, 0.4), rgba(#000000, 0.3), rgba(#000000, 0.2), rgba(#000000, 0.2), rgba(#000000, 0.2));
+        // background-color: rgba(#000000, 0.2);
+
+        .proprietaire {
+
+
+            position: absolute;
+            left: 0;
+            bottom: 56px;
+            width: 75vw;
+            padding: 15px;
+            // background-color: red;
+            text-align: left;
+
+            .photo {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                // background-color: #ccc;
+                background-size: cover;
+                margin-bottom: 5px;
+                border: 2px solid rgb(203, 141, 34);
+                overflow: hidden;
+
+                .showPP {
+                    opacity: 1;
+                }
+
+                .dontShowPP {
+                    opacity: 0;
+                }
+            }
+
+            .nom {
+                font-size: 15px;
+                color: rgb(203, 141, 34);
+                color: lighten(rgb(203, 141, 34), 20%);
+                font-family: 'Titillium Web';
+
+            }
+
+            .description {
+                font-size: 12px;
+                color: #ccc;
+                color: lighten(rgb(203, 141, 34), 40%);
+                width: 200px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                opacity: 0.9;
+            }
+        }
+
+        .datePrix {
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 165px;
+            // background-color: red;
+            padding: 15px;
+            padding-top: 5px;
+            text-align: left;
+            line-height: 1;
+
+            font-family: 'Titillium Web';
+
+            .prix {
+                font-size: 35px;
+                font-weight: bold;
+                color: #fff;
+                color: rgb(203, 141, 34);
+            }
+
+            .date {
+                font-size: 12px;
+                color: lighten(rgb(203, 141, 34), 40%);
+            }
+        }
+
+        .boutons {
+            position: absolute;
+            right: -10px;
+            top: 60px;
+            width: 75px;
+            // background-color: red;
+            padding: 0px;
+            z-index: 123456;
+            text-align: center;
+            .bouton {
+                line-height: 0.8;
+                margin-bottom: 0px;
+                overflow: hidden;
+
+                ion-icon {
+                    font-size: 30px;
+                }
+                .icone {
+                    font-size: 30px;
+                    color: #ccc;
+
+                    & .grand {
+                        font-size: 40px;
+                    }
+                }
+
+                .chiffre {
+                    color: #fff;
+                    font-family: 'Titillium Web';
+                    font-size: 15px;
+                    margin-top: -15px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    &__effets {
+
+        position: absolute;
+        top: 10vh;
+        left: 10vw;
+        height: 60vh;
+        width: 70vw;
+        border: 0px dashed #fff;
+        overflow: hidden;
+
+    }
+
+    &__barre_lecture {
+        
+        position: absolute;
+        bottom: 56px;
+        left: 0;
+        height: 1px;
+        background-color: lighten(rgb(203, 141, 34), 40%);
+        overflow: hidden;
+        width: 100vw;
+        opacity: 0.9;
+    }
+}
+
+ion-progress-bar {
+    --background: #fff;
+}
+
+.coeur-muanza-container {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.coeur-muanza {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    font-size: 385px;
+    color: rgb(203, 141, 34);
+    color: lighten( rgb(203, 141, 34), 10%);
+    text-align: center;
+    padding-top: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    overflow: hidden;
+    opacity: 0;
+
+    animation-name: moncoeur4;
+    animation-duration: 2000ms;
+
+    div {
+        padding-top: 100vh;
+        transform: translateY(-50%);
+    }
+
+}
+
+.commentaires {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
+    z-index: 12345;
+}
+
+
+@keyframes moncoeur4 {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(10) rotate(-90deg);
+        opacity: 0;
+    }
+}
+
+.swapeur {
+    &-list {
+        // background-color: red;
+        display: none;
+        padding-top: 5px;
+    }
+
+    &-item {
+        padding: 2px;
+        img {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 0px solid rgb(203, 141, 34);
+            margin-left: -5px;
+        }
+    }
+}

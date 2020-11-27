@@ -1,0 +1,65 @@
+.commentaires {
+    background-color: #eee;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.contenu {
+    width: 100vw;
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: #fff;
+    // border-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-bottom: 10vh;
+    padding-top: 10px;
+
+}
+.redaction {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding-left: 10px;
+    //padding-right: 10px;
+    border-top: 1px solid #eee;
+    height: 10vh;
+    background-color: #fff;
+}
+
+ion-button {
+    --box-shadow: none;
+    box-shadow: rgba(#000, 0);
+    font-family: 'Titillium Web';
+}
+
+.titre {
+    height: 7vh;
+    overflow: hidden;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    font-family: 'Roboto Condensed';
+    line-height: 1.15;
+    font-size: 0.9em;
+    text-align: center;
+    color: #aaa;
+    padding-bottom: 0px;
+    padding-top: 15px;
+
+}
+
+@keyframes loadinger {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.loading {
+    animation-name: loadinger;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    opacity: 0.5;
+}

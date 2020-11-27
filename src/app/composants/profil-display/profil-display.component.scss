@@ -1,0 +1,159 @@
+.profils-similaires {
+    padding: 10px;
+    padding-top: 10px;
+    overflow: hidden;
+    background-color: #fafafa;
+
+    .pseudo {
+        font-size: 12px;
+        color: #444;
+        font-family: 'Roboto Condensed';
+    }
+
+    .libelle {
+        font-size: 0.9em;
+        padding-left: 10px;
+        padding-top: 0px;
+        padding-bottom: 5px;
+        font-family: 'Roboto Condensed';
+    }
+
+    .fermer {
+        font-family: 'Roboto Condensed';
+        text-align: right;
+        padding: 5px;
+
+    }
+
+    .profil-similaire {
+        background-color: white;
+        border: 1px solid #eee;
+        margin-left: 1px;
+        margin-right: 1px;
+        height: 180px;
+
+        .photo {
+            img {
+                height: 70px;
+                width: 70px;
+                border-radius: 50%;
+            }
+        }
+
+        .boutons {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+        }
+    }
+}
+
+ion-button {
+    --box-shadow: none;
+    box-shadow: rgba(#000, 0);
+    font-family: 'Titillium Web';
+}
+.profil {
+    &-container .entete {
+        padding-top: 20px;
+    }
+    &-container {
+        height: 100vh;
+        width: 100vw;
+        padding-bottom: 15vh;
+        background-color: #fff;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    &-photo {
+        width: 30vw;
+        height: 30vw;
+        margin-left: 35vw;
+        background-color: #777;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center center;
+        font-family: 'Roboto Condensed';
+    }
+
+    &-name-container {
+        margin-top: 5px;
+        font-family: 'Roboto Condensed';
+        font-size: 0.9em;
+    }
+
+    &-details-container {
+        margin-top: 15px;
+    }
+
+    &-details {
+        text-align: center;
+        span {
+            display: inline-block;
+            font-family: 'Titillium Web';
+            line-height: 1.15;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            .chiffre {
+                font-weight: bolder;
+            }
+            .libelle {
+                font-size: 0.8em;
+                color: #333;
+            }
+        }
+    }
+
+    &-boutons-container {
+        margin-top: 15px;
+    }
+
+    &-segment {
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+    }
+}
+
+.profil-videos {
+    text-align: left;
+    line-height: 0.8;
+}
+
+
+.profil-description {
+    font-family: 'Roboto Condensed';
+    text-align: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    line-height: 1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #444;
+}
+
+
+.page-section {
+    background-color: #fff;
+    height: calc(100vh - 114px);
+    overflow: auto;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: 5px;
+}
+
+.arriere {
+    background-color: #303030;
+    height: calc(100vh - 56px);
+    overflow: hidden;
+}
+
+.couverture-tab {
+    height: 50vh;
+}

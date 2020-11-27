@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Photo de profil
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button style="background-color: rgb(203, 141, 34); text-align: center; border-radius: 5px; height: 40px;" (click)="saveImage()">
+        <b style="font-size: 1.5em; font-family: 'Titillium Web'; color: white; padding-left: 7px; padding-right: 7px;">
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </b>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-progress-bar *ngIf="photo" color="primary" [value]="progress"></ion-progress-bar>
+  <angular-cropper #angularCropper [cropperOptions]="cropperOptions" [imageUrl]="photoURL">
+
+  </angular-cropper>
+  <input #fileButton type="file" (change)="uploadFile($event)" class="filebtn" />
+  
+  <ion-button (click)="galerie()" expand="block" size="small" color="light" class="profil-name-container" style="text-align: center;">
+    Choisir une photo dans la galerie
+  </ion-button>
+</ion-content>

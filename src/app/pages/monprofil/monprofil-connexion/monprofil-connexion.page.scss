@@ -1,0 +1,72 @@
+.message {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #777;
+    font-family: 'Titillium Web';
+}
+
+.inscription {
+    color: #777;
+    text-align: center;
+    padding: 5px;
+    padding-top: 25px;
+    font-family: 'Titillium Web';
+
+    div {
+        font-weight: bold;
+        padding: 10px;
+        color: #444;
+    }
+}
+
+ion-toolbar {
+    --background: #eee;
+}
+
+ion-list {
+    --background: rgba(0,0,0,0);
+}
+
+ion-item {
+    --background: #ddd;
+    --border-radius: 30px;
+    --border-color: red;
+    --border-width: 0px;
+    --highlight-color-focused: rgba(0,0,0,0);
+    --padding-end: 30px;
+}
+
+ion-button {
+    --padding-bottom: 25px;
+    --padding-top: 25px;
+    --border-radius: 30px
+}
+
+form {
+    div {
+        margin-bottom: 10px;
+    }
+}
+
+.page-connexion {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-color: #eee;
+    
+    padding-top: 0vh;
+    height: calc(100vh - 114px);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.logo {
+    width: 30vw;
+    height: 30vw;
+    margin-left: 30vw;
+    //border: 1px solid #aaa;
+    border-radius: 30px;
+    background-image: url('../../../../assets/img/logos/Kmarron.png');
+    background-size: cover;
+    background-position: center center;
+}

@@ -1,0 +1,13 @@
+ion-button {
+    --box-shadow: none;
+    box-shadow: rgba(#000, 0);
+    font-family: 'Titillium Web';
+}
+
+.filebtn {
+    opacity: 0;
+    position: absolute;
+    top: -100em;
+    left: -100em;
+    display: none;
+}
