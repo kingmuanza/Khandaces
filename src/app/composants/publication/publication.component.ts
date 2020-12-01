@@ -76,6 +76,7 @@ export class PublicationComponent implements OnInit, OnChanges, AfterViewInit {
     if (oui) {
       this.videoService.supprimerVideo(this.video).then(() => {
         this.presentToast('La vidéo a été supprimée !');
+        
         this.location.back();
       });
     }
